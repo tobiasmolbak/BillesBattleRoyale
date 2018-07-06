@@ -123,7 +123,6 @@ GameObject:
   - component: {fileID: 7379825}
   - component: {fileID: 7379824}
   - component: {fileID: 7379823}
-  - component: {fileID: 7379822}
   - component: {fileID: 7379821}
   - component: {fileID: 7379820}
   m_Layer: 9
@@ -141,9 +140,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7379819}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 562dca2635c790a4ca176052dca9c43e, type: 3}
+  m_Script: {fileID: 11500000, guid: 078dced24642f9649b4e42be8f9afb67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minGroundNormalY: 0.65
+  gravityModifier: 1
+  maxSpeed: 7
+  jumpTakeOffSpeed: 20
 --- !u!95 &7379821
 Animator:
   serializedVersion: 3
@@ -163,22 +166,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!58 &7379822
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 5800000, guid: 6aa187bc6339843479c03fdfd71404a3,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 7379819}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 24ac79603fb61400588e37d9f6fe952a, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.45}
-  serializedVersion: 2
-  m_Radius: 0.37
 --- !u!61 &7379823
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -323,7 +310,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!1 &157543827
 GameObject:
@@ -398,7 +385,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!1 &476541552
 GameObject:
@@ -473,7 +460,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!1 &519420028
 GameObject:
@@ -621,7 +608,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!1 &585893155
 GameObject:
@@ -696,7 +683,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!1 &650340822
 GameObject:
@@ -771,7 +758,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!1 &1047746393
 GameObject:
@@ -971,7 +958,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!1 &1304613262
 GameObject:
@@ -1004,6 +991,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecfd4b90a00c8f649a5e7aa096e2afe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minGroundNormalY: 0.65
   gravityModifier: 1
 --- !u!212 &1304613264
 SpriteRenderer:
@@ -1048,7 +1036,7 @@ SpriteRenderer:
   m_Size: {x: 3.05, y: 4.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!50 &1304613265
 Rigidbody2D:
@@ -1206,7 +1194,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!1001 &1414675973
 Prefab:
@@ -1329,7 +1317,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!1 &1633942510
 GameObject:
@@ -1371,13 +1359,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d2a531e44d8f564397e48969960fb3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxPlatforms: 20
-  platform: {fileID: 1303089104270988, guid: 477e6611741ce654f86f046fecb7c612, type: 2}
-  horizontalMin: 6.5
-  horizontalMax: 14
-  verticalMin: -4
-  verticalMax: 4
-  originPosition: {x: 0, y: 0}
 --- !u!1 &1977284755
 GameObject:
   m_ObjectHideFlags: 0
