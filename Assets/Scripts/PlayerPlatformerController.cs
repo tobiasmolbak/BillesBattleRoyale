@@ -7,9 +7,14 @@ public class PlayerPlatformerController : PhysicsObject {
     public float maxSpeed = 7;
     public float jumpTakeOffSpeed = 7;
 
+    private bool facingRight = true;
+    private SpriteRenderer mSpriteRenderer;
+    private Animator mAnimator;
+
 	// Use this for initialization
 	void Start () {
-		
+        mSpriteRenderer = GetComponent<SpriteRenderer>();
+        mAnimator = GetComponent<Animator>();
 	}
 
     protected override void ComputeVelocity() {
@@ -28,6 +33,26 @@ public class PlayerPlatformerController : PhysicsObject {
             }
         }*/
 
+        if (velocity.x > 0 && grounded) {
+            mAnimator.SetFloat("Walk", Mathf.Abs(velocity.x));
+        } else if (velocity.x <= 0 && grounded) {
+            mAnimator.SetFloat("Walk", Mathf.Abs(velocity.x));
+        }
+
         targetVelocity = move * maxSpeed;
+
+        Flip(move);
+    }
+
+    private void Flip(Vector2 move) {
+        if (move.x < 0 && facingRight) {
+            facingRight = !facingRight;
+            mSpriteRenderer.flipX = true;
+
+        } else if (move.x > 0 && !facingRight) {
+            facingRight = !facingRight;
+            mSpriteRenderer.flipX = false;
+
+        }
     }
 }
