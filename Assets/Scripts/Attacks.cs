@@ -11,7 +11,7 @@ public class Attacks : MonoBehaviour {
     public float flightTime;
     public Rigidbody2D projectilePrefab;
     public LayerMask notToHit;
-    
+
     private PlayerPlatformerController playerCtrl;
     private Animator playerAnimator;
     private Transform firePoint;
@@ -41,9 +41,10 @@ public class Attacks : MonoBehaviour {
             bulletInstance = Instantiate(projectilePrefab, firePoint.position, Quaternion.Euler(new Vector3(0, 0, 180f))) as Rigidbody2D;
             bulletInstance.velocity = new Vector2(-speed, 0);
         }
-        
-        bulletInstance.gameObject.GetComponent<ProjectileController>().damage = damage;
-        bulletInstance.gameObject.GetComponent<ProjectileController>().velocity = bulletInstance.velocity;
+
+        bulletInstance.gameObject.GetComponent<ProjectileController>()
+            .SetupProjectile(playerCtrl.playerName, damage, bulletInstance.velocity);
+
         Destroy(bulletInstance.gameObject, flightTime);
     }
 }

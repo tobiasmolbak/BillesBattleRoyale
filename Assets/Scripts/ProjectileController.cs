@@ -8,6 +8,12 @@ public class ProjectileController : MonoBehaviour {
     public float damage;
     public Vector2 velocity;
 
+    public void SetupProjectile(string playerName, float damage, Vector2 velocity) {
+        this.playerName = playerName;
+        this.damage = damage;
+        this.velocity = velocity;
+    }
+
     public void Explode() {
         Destroy(gameObject);
     }
@@ -15,9 +21,8 @@ public class ProjectileController : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D otherCollider) {
         GameObject colObj = otherCollider.gameObject;
 
-        Debug.Log(colObj.GetComponent<PlayerPlatformerController>().name);
-
-        if (colObj.GetComponent<PlayerPlatformerController>().name != playerName) {
+        if (colObj.GetComponent<PlayerPlatformerController>() == null ||
+            colObj.GetComponent<PlayerPlatformerController>().playerName != playerName) {
             Debug.Log("Collision: " + colObj.name);
 
             // Animate and destroy
