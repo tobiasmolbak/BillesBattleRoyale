@@ -11,8 +11,7 @@ public class Attacks : MonoBehaviour {
     public float flightTime;
     public Rigidbody2D projectilePrefab;
     public LayerMask notToHit;
-
-    private float timeToFire = 0;
+    
     private PlayerPlatformerController playerCtrl;
     private Animator playerAnimator;
     private Transform firePoint;

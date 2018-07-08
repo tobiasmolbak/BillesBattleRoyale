@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerPlatformerController : PhysicsObject {
 
+    public string playerName;
     public int health = 100;
     public float maxSpeed = 7;
     public float jumpTakeOffSpeed = 20;
@@ -16,7 +17,13 @@ public class PlayerPlatformerController : PhysicsObject {
     private BoxCollider2D mBoxCollider;
 
     // Use this for initialization
+    private void Awake() {
+        playerName = Time.realtimeSinceStartup.ToString();
+        Debug.Log("Playername: " + playerName);
+    }
+
     void Start() {
+        playerName = Time.realtimeSinceStartup.ToString();
         mTransform = GetComponent<Transform>();
         mAnimator = GetComponent<Animator>();
         mBoxCollider = GetComponent<BoxCollider2D>();
@@ -71,18 +78,18 @@ public class PlayerPlatformerController : PhysicsObject {
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collider) {
+    /*private void OnCollisionEnter2D(Collision2D collider) {
         GameObject colObj = collider.gameObject;
         Debug.Log("Collision: " + colObj.name);
         if (colObj.name.Contains("Projectile")) {
 
-
+            float damage = colObj.GetComponent<ProjectileController>().damage;
 
             // Animate and destroy
             colObj.GetComponent<Animator>().SetTrigger("Explode");
             colObj.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         }
-    }
+    }*/
 
     private bool Alive() {
         if (health > 0) {

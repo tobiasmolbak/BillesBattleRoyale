@@ -99,7 +99,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1537754464160032}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.4, y: -0.385, z: 0}
+  m_LocalPosition: {x: 0.45, y: -0.385, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4679138948275594}
@@ -242,7 +242,7 @@ MonoBehaviour:
   shootButton: Fire1
   fireRate: 0
   damage: 10
-  speed: 8
+  speed: 11
   flightTime: 1.5
   projectilePrefab: {fileID: 50180172897636298, guid: eaa2cd0a38e913242a84403da0da4521,
     type: 2}
