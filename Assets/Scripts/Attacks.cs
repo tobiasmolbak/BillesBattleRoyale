@@ -13,37 +13,38 @@ public class Attacks : MonoBehaviour {
     public LayerMask notToHit;
 
     private float timeToFire = 0;
-    private List<GameObject> projectileList = new List<GameObject>();
     private PlayerPlatformerController playerCtrl;
     private Animator playerAnimator;
     private Transform firePoint;
 
     // Use this for initialization
-    void Awake () {
+    void Awake() {
         firePoint = this.gameObject.transform.Find("ShootPosition");
         playerCtrl = this.gameObject.GetComponentInParent<PlayerPlatformerController>();
         playerAnimator = playerCtrl.GetComponent<Animator>();
     }
-	
-	// Update is called once per frame
-	void Update () {
-		if (Input.GetButtonDown(shootButton)) {
+
+    // Update is called once per frame
+    void Update() {
+        if (Input.GetButtonDown(shootButton)) {
             playerAnimator.SetTrigger("Shoot");
             Fire();
         }
-	}
+    }
 
     private void Fire() {
+        Rigidbody2D bulletInstance;
+
         if (playerCtrl.facingRight) {
-            Rigidbody2D bulletInstance = Instantiate(projectilePrefab, firePoint.position, Quaternion.Euler(new Vector3(0, 0, 0))) as Rigidbody2D;
+            bulletInstance = Instantiate(projectilePrefab, firePoint.position, Quaternion.Euler(new Vector3(0, 0, 0))) as Rigidbody2D;
             bulletInstance.velocity = new Vector2(speed, 0);
-
-            Destroy(bulletInstance.gameObject, flightTime);
         } else {
-            Rigidbody2D bulletInstance = Instantiate(projectilePrefab, firePoint.position, Quaternion.Euler(new Vector3(0, 0, 180f))) as Rigidbody2D;
+            bulletInstance = Instantiate(projectilePrefab, firePoint.position, Quaternion.Euler(new Vector3(0, 0, 180f))) as Rigidbody2D;
             bulletInstance.velocity = new Vector2(-speed, 0);
-
-            Destroy(bulletInstance.gameObject, flightTime);
         }
+        
+        bulletInstance.gameObject.GetComponent<ProjectileController>().damage = damage;
+        bulletInstance.gameObject.GetComponent<ProjectileController>().velocity = bulletInstance.velocity;
+        Destroy(bulletInstance.gameObject, flightTime);
     }
 }
