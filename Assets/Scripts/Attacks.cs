@@ -35,19 +35,15 @@ public class Attacks : MonoBehaviour {
 
     private void Fire() {
         if (playerCtrl.facingRight) {
-            Rigidbody2D bulletInstance = Instantiate(
-                projectilePrefab,
-                firePoint.position,
-                Quaternion.Euler(new Vector3(0, 0, 0)))
-                as Rigidbody2D;
+            Rigidbody2D bulletInstance = Instantiate(projectilePrefab, firePoint.position, Quaternion.Euler(new Vector3(0, 0, 0))) as Rigidbody2D;
             bulletInstance.velocity = new Vector2(speed, 0);
 
-            Destroy(bulletInstance, flightTime);
+            Destroy(bulletInstance.gameObject, flightTime);
         } else {
             Rigidbody2D bulletInstance = Instantiate(projectilePrefab, firePoint.position, Quaternion.Euler(new Vector3(0, 0, 180f))) as Rigidbody2D;
             bulletInstance.velocity = new Vector2(-speed, 0);
 
-            Destroy(bulletInstance, flightTime);
+            Destroy(bulletInstance.gameObject, flightTime);
         }
     }
 }
