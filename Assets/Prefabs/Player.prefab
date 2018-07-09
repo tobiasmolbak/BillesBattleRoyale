@@ -224,6 +224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minGroundNormalY: 0.65
   gravityModifier: 1
+  playerName: Test
   health: 100
   maxSpeed: 7
   jumpTakeOffSpeed: 20
@@ -240,7 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootButton: Fire1
-  fireRate: 0
+  fireRate: 0.33
   damage: 10
   speed: 11
   flightTime: 1.5

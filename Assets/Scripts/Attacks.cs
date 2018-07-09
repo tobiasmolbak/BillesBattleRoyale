@@ -5,7 +5,7 @@ using UnityEngine;
 public class Attacks : MonoBehaviour {
 
     public string shootButton = "Fire1";
-    public float fireRate = 0;
+    public float fireRate = 0.33f;
     public float damage = 10;
     public float speed;
     public float flightTime;
@@ -15,6 +15,7 @@ public class Attacks : MonoBehaviour {
     private PlayerPlatformerController playerCtrl;
     private Animator playerAnimator;
     private Transform firePoint;
+    private float nextShot;
 
     // Use this for initialization
     void Awake() {
@@ -25,7 +26,8 @@ public class Attacks : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (Input.GetButtonDown(shootButton)) {
+        if (Input.GetButtonDown(shootButton) && Time.time > nextShot) {
+            nextShot = Time.time + fireRate;
             playerAnimator.SetTrigger("Shoot");
             Fire();
         }
